@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VBPIXEL官方网站</title>
+    <!-- 引入Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- 自定义样式 -->
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+        .header {
+            background: url('header-background.jpg') no-repeat center center;
+            background-size: cover;
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        .header h1 {
+            font-size: 3rem;
+        }
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+        }
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container text-center">
+            <h1>VBPIXEL Network</h1>
+            <p class="lead">公益小游戏服务器</p>
+        </div>
+    </div>
+
+    <!--居中显示-->
+    <div class="container">
+        <div class="row center">
+            <div class="col-md-6 text-center">
+                <h2 class="mb-4">关于我们 <span class="badge badge-secondary">About Us</span></h2>
+                <div class="card bg-dark text-white">
+                    <div class="card-body">
+                        <p class="card-text">我们的服务器是一个充满乐趣和挑战的我的世界小游戏平台，致力于为玩家提供最优质的体验。我们拥有一个活跃的社区，定期举办活动和更新，确保每次游戏体验都是新鲜和刺激的。</p>
+                        <button class="btn btn-outline-light btn-sm" onclick="joinServer()">了解更多</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <button class="btn btn-primary btn-lg" onclick="joinServer()">加入服务器</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p>VBPIXEL Network &copy; 2022-2024 All rights reserved</p>
+        </div>
+    </div>
+
+    <!-- 引入Bootstrap JS和依赖的Popper.js以及jQuery -->
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        function joinServer() {
+            alert('服务器IP：example.minecraftserver.com');
+        }
+    </script>
+</body>
+</html>
