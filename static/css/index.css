@@ -1,0 +1,97 @@
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+.header {
+  background: url('../images/header-background.png') no-repeat center center;
+  background-size: cover;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  position: relative;
+}
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(6px); /* 背景虚化 */
+  z-index: 1;
+}
+.header .container {
+  position: relative;
+  z-index: 2;
+}
+.header h1 {
+  font-size: 3rem;
+}
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+@keyframes slideUp {
+  from {
+      transform: translateY(20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.server-status {
+  margin-bottom: 0px;
+}
+.about-us {
+  margin-top: 40px;
+}
+.about-us .card {
+  margin-bottom: 20px;
+}
+.about-us h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+.about-us p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+.about-us .card-title {
+  font-size: 1.5rem;
+}
+.about-us .card-text {
+  font-size: 1rem;
+}
+.card-columns {
+  column-count: auto;
+}
+.auto-size {
+  width: auto;
+}
+@media (max-width: 767.98px) {
+  .card-columns {
+      column-count: 2;
+  }
+}
+
+.card {
+    animation: slideUp 0.7s forwards;
+    max-width: 300px; /* 最大宽度 */
+    break-inside: avoid; /* 防止卡片被分割 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+    transition: transform 0.3s ease; /* 平滑缩放 */
+}
+
+.card:hover {
+    transform: scale(1.05); /* 鼠标悬停时稍微放大卡片 */
+}

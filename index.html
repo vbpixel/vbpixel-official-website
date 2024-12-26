@@ -4,32 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VBPIXEL官方网站</title>
-    <!-- 引入Bootstrap CSS -->
+    <!-- 引入CSS -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="static/css/index.css">
     <style>
-        body {
-            background-color: #1a1a1a;
-            color: #fff;
+        .about-us {
+            margin-top: 50px;
         }
-        .header {
-            background: url('header-background.jpg') no-repeat center center;
-            background-size: cover;
-            padding-top: 100px;
-            padding-bottom: 100px;
+        .card-columns {
+            column-count: 2; /* Adjust the number of columns as needed */
         }
-        .header h1 {
-            font-size: 3rem;
-        }
-        .footer {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-        }
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .card {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -37,36 +23,66 @@
     <div class="header">
         <div class="container text-center">
             <h1>VBPIXEL Network</h1>
-            <p class="lead">公益小游戏服务器</p>
+            <em>"公益小游戏服务器"</em>
         </div>
     </div>
 
     <!--居中显示-->
-    <div class="container">
-        <div class="row center">
-            <div class="col-md-6 text-center">
+    <div class="container about-us">
+        <div class="row align-items-center">
+            <div class="col-md-4 text-center">
                 <h2 class="mb-4">关于我们 <span class="badge badge-secondary">About Us</span></h2>
-                <div class="card bg-dark text-white">
-                    <div class="card-body">
-                        <p class="card-text">None</p>
-                        <button class="btn btn-outline-light btn-sm" onclick="joinServer()">了解更多</button>
+            </div>
+            <div class="col-md-8">
+                <div class="card-columns">
+                    <div class="card bg-dark text-white text-center">
+                        <div class="card-body">
+                            <h3 class="card-title">2</h3>
+                            <p class="card-text">2</p>
+                        </div>
+                    </div>
+                    <div class="card bg-dark text-white text-center">
+                        <div class="card-body">
+                            <h3 class="card-title">3</h3>
+                            <p class="card-text">3</p>
+                        </div>
+                    </div>
+                    <div class="card bg-dark text-white text-center">
+                        <div class="card-body">
+                            <h3 class="card-title">4</h3>
+                            <p class="card-text">4</p>
+                        </div>
+                    </div>
+                    <div class="card bg-dark text-white text-center">
+                        <div class="card-body">
+                            <h3 class="card-title">5</h3>
+                            <p class="card-text">5</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    </div>
-        <div class="row mt-5">
-            <div class="col text-center">
-                <button class="btn btn-primary btn-lg" onclick="joinServer()">加入服务器</button>
-            </div>
+    <div class="row mt-5">
+        <div class="col text-center">
+            <button class="btn btn-primary btn-lg" onclick="joinServer()">加入服务器</button>
         </div>
     </div>
 
+    <!-- 增加与页脚的间距 -->
+    <div class="mt-4"></div>
+
+    <!-- 服务器状态显示 -->
+
     <div class="footer">
         <div class="container">
-            <p>VBPIXEL Network &copy; 2022-2024 All rights reserved</p>
+            <div class="container server-status">
+                <div class="row">
+                    <p id="server-status">正在加载服务器状态...</p>
+                </div>
+            </div>
+            VBPIXEL Network &copy; 2022-2024 All rights reserved
         </div>
     </div>
 
@@ -75,8 +91,32 @@
     <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script>
-        function joinServer() {
+        // 调用API获取服务器在线状态
+        function fetchOnlinePlayers() {
+            const serverIp = 'mc.vbpixel.cn';
+            const apiUrl = `https://list.mczfw.cn/api/${serverIp}`;
+
+            $.getJSON(apiUrl, function(data) {
+                if (data.p !== undefined) {
+                    const playersOnline = data.p;
+                    const maxPlayers = data.mp;
+                    if (data.ping != null){
+                        $('#server-status').html(`服务器状态：在线 | 在线玩家：${playersOnline}/${maxPlayers}`);
+                    }else {
+                        $('#server-status').html(`服务器状态：离线`);
+                    }
+                } else {
+                    $('#server-status').html('无法获取服务器状态');
+                }
+            }).fail(function() {
+                $('#server-status').html('无法连接到服务器');
+            });
         }
+
+        // 页面加载完成后获取在线状态
+        /*$(document).ready(function() {
+            fetchOnlinePlayers();
+        });*/
     </script>
 </body>
 </html>
