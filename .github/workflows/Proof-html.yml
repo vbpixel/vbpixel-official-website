@@ -19,7 +19,10 @@ jobs:
           bundler-cache: true
 
       - name: "build"
-        run: bundle exec jekyll build
+      - run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - run: bundle exec jekyll build
 
       - name: "check HTML"
         uses: anishathalye/proof-html@v2
