@@ -1,0 +1,30 @@
+name: "Proof HTML"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "Setup Ruby"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+          bundler-cache: true
+
+      - name: "build"
+        run: bundle exec jekyll build
+
+      - name: "check HTML"
+        uses: anishathalye/proof-html@v2
+        with:
+          directory: ./
+          enforce_https: false
+          tokens: |
+            {"https://github.com": "${{ secrets.GITHUB_TOKEN }}"}
