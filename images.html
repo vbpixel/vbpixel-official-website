@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务器照片 - VBPIXEL官方网站</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <style>
+        .gallery {
+            column-count: 1;
+            column-gap: 1em;
+        }
+
+        .gallery img {
+            width: 100%;
+            margin-bottom: 1em;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .navbar {
+             position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        body {
+            padding-top: 70px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">VBPIXEL Network</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars custom-navbar-icon"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="joinus.html">加入我们</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://chat.vbpixel.cn:10203">在线聊天</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">服务器图片</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 gallery">
+                 <img src="static/images/2024-12-26_16.46.52.png" alt="服务器图片1" class="img-fluid mb-3">
+            </div>
+            <div class="col-12 col-lg-6 gallery">
+                 <img src="static/images/2024-12-26_16.48.36.png" alt="服务器图片2" class="img-fluid mb-3">
+             </div>
+            <div class="col-12 col-lg-6 gallery">
+                <img src="static/images/2024-08-02_01.43.46.png" alt="服务器图片3" class="img-fluid mb-3">
+            </div>
+            <div class="col-12 col-lg-6 gallery">
+              <img src="static/images/2024-11-02_14.32.23.png" alt="服务器图片4" class="img-fluid mb-3">
+            </div>
+            <div class="col-12 col-lg-6 gallery">
+                <img src="static/images/2024-12-26_17.40.39.png" alt="服务器图片5" class="img-fluid mb-3">
+            </div>
+            <div class="col-12 col-lg-6 gallery">
+                <img src="static/images/2024-12-26_17.40.15.png" alt="服务器图片4" class="img-fluid mb-3">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="container server-status">
+                <div class="row">
+                    <p id="server-status">正在加载服务器状态...</p>
+                </div>
+            </div>
+            联系我们:
+            <br>
+            <a href="https://qm.qq.com/q/siO2c3SkF4">QQ群</a>
+            <br>
+            <a href="https://space.bilibili.com/1168851293">bilibili</a>
+            <br>
+            <a href="mailto:neko110923@163.com">电子邮件</a>
+            <div class="copy">
+                &copy 2024 vbpixel
+            </div>
+        </div>
+    </div>
+
+    <script src="static/javascripts/index.js"></script>
+</body>
+</html>

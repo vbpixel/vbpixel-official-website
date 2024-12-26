@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VBPIXEL官方网站</title>
+    <title>首页 - VBPIXEL官方网站</title>
     <!-- 引入CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
     <!-- 导航栏 -->
@@ -14,7 +16,7 @@
         <div class="container">
             <a class="navbar-brand" href="#">VBPIXEL Network</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <img class="navbar-menu-icon" src="static/images/menu.png" alt="menu" width="25" height="30">
+                <i class="fa-solid fa-bars custom-navbar-icon"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
@@ -22,10 +24,13 @@
                         <a class="nav-link" href="#">首页</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">在线聊天</a>
+                        <a class="nav-link" href="joinus.html">加入我们</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">联系我们</a>
+                        <a class="nav-link" href="http://chat.vbpixel.cn:10203">在线聊天</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="images.html">服务器图片</a>
                     </li>
                 </ul>
             </div>
@@ -41,46 +46,49 @@
 
     <!--居中显示-->
     <div class="container about-us">
-        <div class="row align-items-center">
-            <div class="col-md-4 text-center">
+        <div class="row">
+            <div class="col-md-12 text-center">
                 <h2 class="mb-4" id="about-us">关于我们 <span class="badge badge-secondary">About Us</span></h2>
             </div>
-            <div class="col-md-8">
-                <div class="row">
+            <div class="col-md-12">
+                <div class="card-deck justify-content-center">
                     <!-- 大屏幕和中等屏幕上每行显示两个卡片 -->
-                    <div class="col-12 col-md-6">
-                        <div class="card bg-dark text-white text-center mb-3">
-                            <div class="card-body">
-                                <h3 class="card-title">免费畅玩</h3>
-                                <h6 p class="card-text">VBPIXEL Network是一个完全免费的游戏服务器，我们坚信游戏应该对所有人开放，无需任何费用</h6>
-                            </div>
+                    <div class="card bg-dark text-white text-center mb-3 mx-auto">
+                        <div class="card-body">
+                            <h3 class="card-title">免费游玩</h3>
+                            <p class="card-text">VBPIXEL Network是一个完全免费的游戏服务器，我们坚信游戏应该对所有人开放，无需任何费用</p>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <div class="card bg-dark text-white text-center mb-3">
-                            <div class="card-body">
-                                <h3 class="card-title">丰富游戏</h3>
-                                <h6 p class="card-text">我们提供多种有趣的游戏模式，包括但不限于起床战争，空岛战争，密室杀手等</h6>
-                            </div>
+                    <div class="card bg-dark text-white text-center mb-3 mx-auto">
+                        <div class="card-body">
+                            <h3 class="card-title">丰富游戏</h3>
+                            <p class="card-text">我们提供多种有趣的游戏模式，包括但不限于起床战争，空岛战争，密室杀手等</p>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <div class="card bg-dark text-white text-center mb-3">
-                            <div class="card-body">
-                                <h3 class="card-title"></h3>
-                                <h6 p class="card-text">VBPIXEL Network拥有一个充满活力和热情的玩家社区。在这里，您可以与其他玩家交流，分享游戏心得，共同进步。</h6>
-                            </div>
+                    <div class="card bg-dark text-white text-center mb-3 mx-auto">
+                        <div class="card-body">
+                            <h3 class="card-title">友好的管理团队</h3>
+                            <p class="card-text">当您遇到任何问题或需要帮助时，请随时向我们反馈，我们的管理将尽快解决</p>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
-                        <div class="card bg-dark text-white text-center mb-3">
-                            <div class="card-body">
-                                <h3 class="card-title">版本互通</h3>
-                                <h6 p class="card-text">您的朋友没有电脑？觉得用手机Java启动器操作太麻烦？没关系，我们的服务器可以让Java版和基岩版一起玩耍！</h6>
-                            </div>                               
-                        </div>
+                    <div class="card bg-dark text-white text-center mb-3 mx-auto">
+                        <div class="card-body">
+                            <h3 class="card-title">版本互通</h3>
+                            <p class="card-text">您的朋友没有电脑？觉得用手机Java启动器操作太麻烦？没关系，服务器允许Java版和基岩版一起玩耍！</p>
+                        </div>                               
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 服务器近期公告 -->
+    <div class="container recent-announcements">
+        <h2 class="mb-4 text-center" id="activities">服务器近期活动 <span class="badge badge-secondary">Activities</span></h2>
+        <div class="card bg-dark text-white mb-3 text-center">
+            <div class="card-header">
+                <h3>跨年合拍</h3>
+                快加入我们的服务器，赶上2024/12/31 21:00的跨年合拍！
             </div>
         </div>
     </div>
@@ -103,6 +111,13 @@
                     <p id="server-status">正在加载服务器状态...</p>
                 </div>
             </div>
+            联系我们:
+            <br>
+            <a href="https://qm.qq.com/q/siO2c3SkF4">QQ群</a>
+            <br>
+            <a href="https://space.bilibili.com/1168851293">bilibili</a>
+            <br>
+            <a href="mailto:neko110923@163.com">电子邮件</a>
             <div class="copy">
                 &copy 2024 vbpixel
             </div>
@@ -113,33 +128,6 @@
     <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script>
-        // 调用API获取服务器在线状态
-        function fetchOnlinePlayers() {
-            const serverIp = 'mc.vbpixel.cn';
-            const apiUrl = `https://list.mczfw.cn/api/${serverIp}`;
-
-            $.getJSON(apiUrl, function(data) {
-                if (data.p !== undefined) {
-                    const playersOnline = data.p;
-                    const maxPlayers = data.mp;
-                    if (data.ping != null){
-                        $('#server-status').html(`服务器状态：在线 | 当前人数：${playersOnline}/${maxPlayers}`);
-                    }else {
-                        $('#server-status').html(`服务器状态：离线`);
-                    }
-                } else {
-                    $('#server-status').html('无法获取服务器状态');
-                }
-            }).fail(function() {
-                $('#server-status').html('无法连接到服务器');
-            });
-        }
-
-        // 页面加载完成后获取在线状态
-        /*$(document).ready(function() {
-            fetchOnlinePlayers();
-        });*/
-    </script>
+    <script src="static/javascripts/index.js"></script>
 </body>
 </html>

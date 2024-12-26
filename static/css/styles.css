@@ -1,0 +1,65 @@
+.copy {
+    text-align: right;
+    color: darkgray;
+  }
+  
+  .navbar-brand, .nav-link {
+    color: white !important;
+  }
+  
+  .navbar-menu-icon {
+    border-color: rgba(0, 0, 0, 0) !important;
+  }
+  
+  .navbar {
+    background-color: #0000002f;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(10px);
+    color: white; /* 白色文字 */
+    position: fixed; /* 固定在顶部 */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* 确保导航栏在其他内容之上 */
+  }
+  .navbar-brand {
+    color: #fff; /* 白色文字 */
+  }
+  .navbar-nav .nav-link {
+    color: #fff; /* 白色文字 */
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .server-status {
+    margin-bottom: 0px;
+  }
+
+body {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+
+.custom-navbar-icon {
+    color: #FFFFFF;
+  }
+
+  .about-us {
+    margin-top: 40px;
+  }
+  .about-us .card {
+    margin-bottom: 20px;
+  }
+  .about-us h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  .about-us p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  .about-us .card-title {
+    font-size: 1.5rem;
+  }
