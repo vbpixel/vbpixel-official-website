@@ -7,19 +7,31 @@
     <!-- 引入CSS -->
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="static/css/index.css">
-    <style>
-        .about-us {
-            margin-top: 50px;
-        }
-        .card-columns {
-            column-count: 2; /* Adjust the number of columns as needed */
-        }
-        .card {
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 <body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">VBPIXEL Network</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <img class="navbar-menu-icon" src="static/images/menu.png" alt="menu" width="25" height="30">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">在线聊天</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">联系我们</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="header">
         <div class="container text-center">
             <h1>VBPIXEL Network</h1>
@@ -31,32 +43,41 @@
     <div class="container about-us">
         <div class="row align-items-center">
             <div class="col-md-4 text-center">
-                <h2 class="mb-4">关于我们 <span class="badge badge-secondary">About Us</span></h2>
+                <h2 class="mb-4" id="about-us">关于我们 <span class="badge badge-secondary">About Us</span></h2>
             </div>
             <div class="col-md-8">
-                <div class="card-columns">
-                    <div class="card bg-dark text-white text-center">
-                        <div class="card-body">
-                            <h3 class="card-title">2</h3>
-                            <p class="card-text">2</p>
+                <div class="row">
+                    <!-- 大屏幕和中等屏幕上每行显示两个卡片 -->
+                    <div class="col-12 col-md-6">
+                        <div class="card bg-dark text-white text-center mb-3">
+                            <div class="card-body">
+                                <h3 class="card-title">免费畅玩</h3>
+                                <h6 p class="card-text">VBPIXEL Network是一个完全免费的游戏服务器，我们坚信游戏应该对所有人开放，无需任何费用</h6>
+                            </div>
                         </div>
                     </div>
-                    <div class="card bg-dark text-white text-center">
-                        <div class="card-body">
-                            <h3 class="card-title">3</h3>
-                            <p class="card-text">3</p>
+                    <div class="col-12 col-md-6">
+                        <div class="card bg-dark text-white text-center mb-3">
+                            <div class="card-body">
+                                <h3 class="card-title">丰富游戏</h3>
+                                <h6 p class="card-text">我们提供多种有趣的游戏模式，包括但不限于起床战争，空岛战争，密室杀手等</h6>
+                            </div>
                         </div>
                     </div>
-                    <div class="card bg-dark text-white text-center">
-                        <div class="card-body">
-                            <h3 class="card-title">4</h3>
-                            <p class="card-text">4</p>
+                    <div class="col-12 col-md-6">
+                        <div class="card bg-dark text-white text-center mb-3">
+                            <div class="card-body">
+                                <h3 class="card-title"></h3>
+                                <h6 p class="card-text">VBPIXEL Network拥有一个充满活力和热情的玩家社区。在这里，您可以与其他玩家交流，分享游戏心得，共同进步。</h6>
+                            </div>
                         </div>
                     </div>
-                    <div class="card bg-dark text-white text-center">
-                        <div class="card-body">
-                            <h3 class="card-title">5</h3>
-                            <p class="card-text">5</p>
+                    <div class="col-12 col-md-6">
+                        <div class="card bg-dark text-white text-center mb-3">
+                            <div class="card-body">
+                                <h3 class="card-title">版本互通</h3>
+                                <h6 p class="card-text">您的朋友没有电脑？觉得用手机Java启动器操作太麻烦？没关系，我们的服务器可以让Java版和基岩版一起玩耍！</h6>
+                            </div>                               
                         </div>
                     </div>
                 </div>
@@ -66,7 +87,7 @@
 
     <div class="row mt-5">
         <div class="col text-center">
-            <button class="btn btn-primary btn-lg" onclick="joinServer()">加入服务器</button>
+            <a class="btn btn-primary btn-lg" href="joinus.html">加入服务器</a>
         </div>
     </div>
 
@@ -82,7 +103,9 @@
                     <p id="server-status">正在加载服务器状态...</p>
                 </div>
             </div>
-            VBPIXEL Network &copy; 2022-2024 All rights reserved
+            <div class="copy">
+                &copy 2024 vbpixel
+            </div>
         </div>
     </div>
 
@@ -101,7 +124,7 @@
                     const playersOnline = data.p;
                     const maxPlayers = data.mp;
                     if (data.ping != null){
-                        $('#server-status').html(`服务器状态：在线 | 在线玩家：${playersOnline}/${maxPlayers}`);
+                        $('#server-status').html(`服务器状态：在线 | 当前人数：${playersOnline}/${maxPlayers}`);
                     }else {
                         $('#server-status').html(`服务器状态：离线`);
                     }
