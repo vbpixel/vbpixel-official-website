@@ -20,6 +20,6 @@ function fetchOnlinePlayers() {
 }
 
 // 页面加载完成后获取在线状态
-/*$(document).ready(function() {
+$(document).ready(function() {
     fetchOnlinePlayers();
-});*/
+});
