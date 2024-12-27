@@ -11,6 +11,11 @@ async function run() {
     }
 
     const token = core.getInput('GITHUB_TOKEN');
+    if (!token) {
+      core.setFailed('GITHUB_TOKEN is not set.');
+      return;
+    }
+
     const octokit = github.getOctokit(token);
 
     const { data: comments } = await octokit.rest.issues.listComments({
