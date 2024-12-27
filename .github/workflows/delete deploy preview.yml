@@ -1,0 +1,36 @@
+name: delete deploy preview
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+jobs:
+  Get-Deploy-ID:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install @actions/github @actions/core
+        shell: bash
+      - name: Get value from comment
+        id: get-value
+        run: node .github/workflows/js/get-value.js
+        shell: bash
+      - name: echo the value debug
+        run: |
+          echo "The value is ${{ steps.get-value.outputs.value }}"
+        shell: bash
+  Call-Api:
+    runs-on: ubuntu-latest
+    needs: Get-Deploy-ID
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: call api
+        uses: South-Paw/action-netlify-cli@v2
+        id: netlify
+        with:
+          args: "netlify api deleteSiteDeploy --data \"{\"deploy_id\": \"${{ needs.Get-Deploy-ID.outputs.value }}\", \"site_id\": \"${{ secrets.NETLIFY_SITE_ID }}\"}\""
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
