@@ -10,7 +10,7 @@ async function run() {
       return;
     }
 
-    const token = core.getInput('GITHUB_TOKEN');
+    const token = process.env.GITHUB_TOKEN;
     if (!token) {
       core.setFailed('GITHUB_TOKEN is not set.');
       return;
