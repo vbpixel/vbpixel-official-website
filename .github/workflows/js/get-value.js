@@ -1,5 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const fs = require('fs');
+const path = require('path');
 
 async function run() {
   try {
@@ -30,14 +32,15 @@ async function run() {
       return;
     }
 
-    const deployUrl = netlifyComment.body.match(/https:\/\/deploy-preview-\d+--[\w-]+\.netlify\.app/)[0];
+    const deployUrl = netlifyComment.body.match(/https:\/\/app\.netlify\.com\/sites\/vbpixel\/deploys\/([\w]+)/);
     if (!deployUrl) {
       core.setFailed('No deploy URL found in comment.');
       return;
     }
 
-    const deployId = deployUrl.split('-')[2].split('.')[0];
-    core.setOutput('value', deployId);
+    const deployId = deployUrl[1];
+    const outputPath = process.env.GITHUB_ENV;
+    fs.appendFileSync(outputPath, `DEPLOY_ID=${deployId}\n`);
   } catch (error) {
     core.setFailed(error.message);
   }
