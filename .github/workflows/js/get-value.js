@@ -24,7 +24,7 @@ async function run() {
       issue_number: pr.number,
     });
 
-    const netlifyComment = comments.find(comment => comment.body.includes('✅ 部署预览就绪！'));
+    const netlifyComment = comments.find(comment => comment.body.includes('部署预览就绪'));
     if (!netlifyComment) {
       core.setFailed('No Netlify deploy preview comment found.');
       return;
