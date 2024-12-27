@@ -1,20 +1,18 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const fs = require('fs');
-const path = require('path');
 
 async function run() {
   try {
     const context = github.context;
     const pr = context.payload.pull_request;
     if (!pr) {
-      core.setFailed('No pull request found.');
+      core.setFailed('未找到拉取请求。');
       return;
     }
 
     const token = process.env.GITHUB_TOKEN;
     if (!token) {
-      core.setFailed('GITHUB_TOKEN is not set.');
+      core.setFailed('GITHUB_TOKEN 未设置。');
       return;
     }
 
@@ -28,19 +26,18 @@ async function run() {
 
     const netlifyComment = comments.find(comment => comment.body.includes('部署预览就绪'));
     if (!netlifyComment) {
-      core.setFailed('No Netlify deploy preview comment found.');
+      core.setFailed('未找到 Netlify 部署预览评论。');
       return;
     }
 
-    const deployUrl = netlifyComment.body.match(/https:\/\/app\.netlify\.com\/sites\/vbpixel\/deploys\/([\w]+)/);
+    const deployUrl = netlifyComment.body.match(/https:\/\/app\.netlify\.com\/sites\/[\w-]+\/deploys\/([\w]+)/);
     if (!deployUrl) {
-      core.setFailed('No deploy URL found in comment.');
+      core.setFailed('评论中未找到部署 URL。');
       return;
     }
 
     const deployId = deployUrl[1];
-    const outputPath = process.env.GITHUB_ENV;
-    fs.appendFileSync(outputPath, `DEPLOY_ID=${deployId}\n`);
+    core.setOutput('DEPLOY_ID', deployId);
   } catch (error) {
     core.setFailed(error.message);
   }
