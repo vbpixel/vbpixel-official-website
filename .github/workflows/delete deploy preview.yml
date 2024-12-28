@@ -10,7 +10,7 @@ jobs:
   Get-Deploy-ID:
     runs-on: ubuntu-latest
     outputs:
-      value: ${{ steps.get-value.outputs.value }}
+      value: ${{ steps.get-value.outputs.DEPLOY_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,9 +21,6 @@ jobs:
         run: node .github/workflows/js/get-value.js
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set output
-        id: set-output
-        run: echo "::set-output name=value::${{ steps.get-value.outputs.value }}"
 
   Call-Api:
     runs-on: ubuntu-latest
