@@ -7,16 +7,16 @@ on:
       - main
 
 jobs:
-  Get-Deploy-ID:
+  Get-Deploy-IDs:
     runs-on: ubuntu-latest
     outputs:
-      value: ${{ steps.get-value.outputs.DEPLOY_ID }}
+      deploy_ids: ${{ steps.get-value.outputs.DEPLOY_IDS }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install dependencies
         run: npm install @actions/github @actions/core
-      - name: Get value from comment
+      - name: Get values from comments
         id: get-value
         run: node .github/workflows/js/get-value.js
         env:
@@ -24,13 +24,18 @@ jobs:
 
   Call-Api:
     runs-on: ubuntu-latest
-    needs: Get-Deploy-ID
+    needs: Get-Deploy-IDs
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Call API
+      - name: Call API for each deploy ID
         run: |
-          echo "The value is ${{ needs.Get-Deploy-ID.outputs.value }}"
-          netlify api deleteSiteDeploy --data "{\"deploy_id\": \"${{ needs.Get-Deploy-ID.outputs.value }}\", \"site_id\": \"${{ secrets.NETLIFY_SITE_ID }}\"}"
+          deploy_ids=(${{ needs.Get-Deploy-IDs.outputs.deploy_ids }})
+          for deploy_id in "${deploy_ids[@]}"; do
+            echo "Deleting deploy ID: $deploy_id"
+            if ! netlify api deleteSiteDeploy --data "{\"deploy_id\": \"$deploy_id\", \"site_id\": \"${{ secrets.NETLIFY_SITE_ID }}\"}"; then
+              echo "deploy ID:$deploy_id删除失败, 继续删除下一个"
+            fi
+          done
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
