@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const fs = require('fs');
 
 async function run() {
   try {
@@ -24,20 +25,40 @@ async function run() {
       issue_number: pr.number,
     });
 
-    const netlifyComment = comments.find(comment => comment.body.includes('部署预览就绪'));
-    if (!netlifyComment) {
+    const netlifyComments = comments.filter(comment => comment.body.includes('部署预览就绪'));
+    if (netlifyComments.length === 0) {
       core.setFailed('未找到 Netlify 部署预览评论。');
       return;
     }
 
-    const deployUrl = netlifyComment.body.match(/https:\/\/app\.netlify\.com\/sites\/[\w-]+\/deploys\/([\w]+)/);
-    if (!deployUrl) {
+    const deployIds = [];
+    for (const comment of netlifyComments) {
+      const matches = comment.body.match(/https:\/\/app\.netlify\.com\/sites\/vbpixel\/deploys\/([\w]+)/g);
+      if (matches) {
+        for (const match of matches) {
+          const deployId = match.split('/').pop();
+          deployIds.push(deployId);
+        }
+      }
+    }
+
+    if (deployIds.length === 0) {
       core.setFailed('评论中未找到部署 URL。');
       return;
     }
 
-    const deployId = deployUrl[1];
-    core.setOutput('DEPLOY_ID', deployId);
+    const outputPath = process.env.GITHUB_ENV;
+    fs.appendFileSync(outputPath, `DEPLOY_IDS=${deployIds.join(',')}\n`);
+
+    // 发送评论到 PR
+    const commentBody = `PR被关闭，此PR部署预览已删除`;
+    await octokit.rest.issues.createComment({
+      owner: context.repo.owner,
+      repo: context.repo.repo,
+      issue_number: pr.number,
+      body: commentBody,
+    });
+
   } catch (error) {
     core.setFailed(error.message);
   }
