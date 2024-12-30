@@ -50,15 +50,6 @@ async function run() {
     const outputPath = process.env.GITHUB_ENV;
     fs.appendFileSync(outputPath, `DEPLOY_IDS=${deployIds.join(',')}\n`);
 
-    // 发送评论到 PR
-    const commentBody = `PR被关闭，此PR部署预览已删除`;
-    await octokit.rest.issues.createComment({
-      owner: context.repo.owner,
-      repo: context.repo.repo,
-      issue_number: pr.number,
-      body: commentBody,
-    });
-
   } catch (error) {
     core.setFailed(error.message);
   }
