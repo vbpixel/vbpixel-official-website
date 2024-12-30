@@ -21,7 +21,7 @@
           document.getElementById('exitIp').textContent = '出口IP: ' + data.exitIp;
         } else {
           document.getElementById('playerList').textContent = '错误: ' + data.error;
-          document.getElementById('exitIp').textContent = '';
+          document.getElementById('exitIp').textContent = '出口IP: ' + data.exitIp;
         }
       } catch (error) {
         document.getElementById('playerList').textContent = '请求失败: ' + error.message;

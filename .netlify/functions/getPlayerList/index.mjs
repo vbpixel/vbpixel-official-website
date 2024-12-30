@@ -13,6 +13,7 @@ exports.handler = async function(event, context) {
     const ipResponse = await axios.get('https://api.ipify.org?format=json');
     const exitIp = ipResponse.data.ip;
 
+    // 获取 Minecraft 服务器状态
     const response = await MinecraftServerListPing.ping(4, serverOptions.host, serverOptions.port, serverOptions.timeout);
     const players = response.players;
     let message;
@@ -29,9 +30,13 @@ exports.handler = async function(event, context) {
       body: JSON.stringify({ message, exitIp }),
     };
   } catch (error) {
+    // 获取出口 IP 地址，即使在发生错误时
+    const ipResponse = await axios.get('https://api.ipify.org?format=json');
+    const exitIp = ipResponse.data.ip;
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: '查询玩家列表出现错误: ' + error.message }),
+      body: JSON.stringify({ error: '查询玩家列表出现错误: ' + error.message, exitIp }),
     };
   }
 };
