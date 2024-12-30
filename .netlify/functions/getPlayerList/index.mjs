@@ -1,4 +1,5 @@
 import { MinecraftServerListPing } from 'minecraft-status';
+import axios from 'axios';
 
 const serverOptions = {
   host: 'service.catpixel.cn',
@@ -8,6 +9,10 @@ const serverOptions = {
 
 exports.handler = async function(event, context) {
   try {
+    // 获取出口 IP 地址
+    const ipResponse = await axios.get('https://api.ipify.org?format=json');
+    const exitIp = ipResponse.data.ip;
+
     const response = await MinecraftServerListPing.ping(4, serverOptions.host, serverOptions.port, serverOptions.timeout);
     const players = response.players;
     let message;
@@ -21,7 +26,7 @@ exports.handler = async function(event, context) {
     }
     return {
       statusCode: 200,
-      body: JSON.stringify({ message }),
+      body: JSON.stringify({ message, exitIp }),
     };
   } catch (error) {
     return {

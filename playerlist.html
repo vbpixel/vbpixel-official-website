@@ -9,6 +9,7 @@
   <h1>我的世界服务器玩家列表</h1>
   <button id="fetchPlayers">查询玩家列表</button>
   <pre id="playerList"></pre>
+  <pre id="exitIp"></pre>
 
   <script>
     document.getElementById('fetchPlayers').addEventListener('click', async () => {
@@ -17,11 +18,14 @@
         const data = await response.json();
         if (response.ok) {
           document.getElementById('playerList').textContent = data.message;
+          document.getElementById('exitIp').textContent = '出口IP: ' + data.exitIp;
         } else {
           document.getElementById('playerList').textContent = '错误: ' + data.error;
+          document.getElementById('exitIp').textContent = '';
         }
       } catch (error) {
         document.getElementById('playerList').textContent = '请求失败: ' + error.message;
+        document.getElementById('exitIp').textContent = '';
       }
     });
   </script>

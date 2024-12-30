@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^1.7.9",
     "minecraft-status": "^1.1.0"
   }
 }
