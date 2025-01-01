@@ -22,9 +22,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const data = await response.json();
 
                 if (response.ok) {
-                    serverStatusElement.innerHTML = `<p>${data.message}</p>`;
+                    serverStatusElement.innerHTML = `${data.message}`;
                 } else {
-                    serverStatusElement.innerHTML = `<p>服务器貌似离线了(</p>`;
+                    serverStatusElement.innerHTML = `服务器貌似离线了(`;
                 }
             } catch (error) {
                 serverStatusElement.innerHTML = `<p>糟了！</p><p>错误信息:${error.message}</p>`;
