@@ -2,7 +2,7 @@ import { MinecraftServerListPing } from 'minecraft-status';
 import axios from 'axios';
 
 const serverOptions = {
-  host: 'service.catpixel.cn',
+  host: '101.42.137.83',
   port: 10201,
   timeout: 3000,
 };
