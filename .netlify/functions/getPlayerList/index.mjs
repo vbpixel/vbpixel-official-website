@@ -19,8 +19,11 @@ exports.handler = async function(event, context) {
     let message;
     if (players.online > 0) {
       message = '';
-      players.sample.forEach(player => {
-        message += `${player.name}\n`;
+      players.sample.forEach((player, index) => {
+        message += `${player.name}`;
+        if (index < players.sample.length - 1) {
+          message += '、';
+        }
       });
     } else {
       message = '暂无玩家在线';
