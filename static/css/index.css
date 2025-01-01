@@ -57,3 +57,8 @@
 .about-us {
   margin-top: 50px;
 }
+
+
+.player-names {
+    font-size: 1.5em; /* 设置玩家名字的字体大小 */
+}

@@ -18,7 +18,7 @@ exports.handler = async function(event, context) {
     const players = response.players;
     let message;
     if (players.online > 0) {
-      message = '当前在线玩家列表:\n';
+      message = '';
       players.sample.forEach(player => {
         message += `${player.name}\n`;
       });
