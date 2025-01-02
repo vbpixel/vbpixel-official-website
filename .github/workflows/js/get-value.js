@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const fs = require('fs');
 
 async function run() {
   try {
@@ -31,13 +30,13 @@ async function run() {
       return;
     }
 
-    const deployIds = [];
+    const deployIds = new Set();
     for (const comment of netlifyComments) {
       const matches = comment.body.match(/https:\/\/app\.netlify\.com\/sites\/vbpixel\/deploys\/([\w]+)/g);
       if (matches) {
         for (const match of matches) {
           const deployId = match.split('/').pop();
-          deployIds.push(deployId);
+          deployIds.add(deployId);
         }
       }
     }
@@ -52,14 +51,12 @@ async function run() {
       if (matches) {
         for (const match of matches) {
           const deployId = match.split('/').pop();
-          if (!deployIds.includes(deployId)) {
-            deployIds.push(deployId);
-          }
+          deployIds.add(deployId);
         }
       }
     }
 
-    core.setOutput('deploy_ids', deployIds.join(','));
+    core.setOutput('deploy_ids', Array.from(deployIds).join(','));
   } catch (error) {
     core.setFailed(`运行失败: ${error.message}`);
   }
