@@ -37,3 +37,5 @@ jobs:
               echo "deploy ID:$deploy_id删除失败, 继续删除下一个"
             fi
           done
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
