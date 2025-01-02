@@ -60,5 +60,10 @@
 
 
 .player-names {
-    font-size: 1em; /* 设置玩家名字的字体大小 */
+  font-size: 1em; /* 设置玩家名字的字体大小 */
+}
+
+.Contact-style {
+  font-size: 1.5em;
+  color: darkgray;
 }
