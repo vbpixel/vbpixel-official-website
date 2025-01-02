@@ -42,16 +42,26 @@ async function run() {
       }
     }
 
-    if (deployIds.length === 0) {
-      core.setFailed('评论中未找到部署 URL。');
-      return;
+    // 获取所有编辑的评论内容
+    const editedComments = comments.filter(comment => comment.updated_at !== comment.created_at);
+
+    // 输出编辑的评论内容并添加 deployId
+    for (const comment of editedComments) {
+      core.info(`评论ID: ${comment.id}\n编辑内容:\n${comment.body}\n`);
+      const matches = comment.body.match(/https:\/\/app\.netlify\.com\/sites\/vbpixel\/deploys\/([\w]+)/g);
+      if (matches) {
+        for (const match of matches) {
+          const deployId = match.split('/').pop();
+          if (!deployIds.includes(deployId)) {
+            deployIds.push(deployId);
+          }
+        }
+      }
     }
 
-    const outputPath = process.env.GITHUB_ENV;
-    fs.appendFileSync(outputPath, `DEPLOY_IDS=${deployIds.join(',')}\n`);
-
+    core.setOutput('deploy_ids', deployIds.join(','));
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(`运行失败: ${error.message}`);
   }
 }
 
