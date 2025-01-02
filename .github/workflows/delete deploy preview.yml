@@ -10,7 +10,7 @@ jobs:
   Get-Deploy-IDs:
     runs-on: ubuntu-latest
     outputs:
-      deploy_ids: ${{ steps.get-value.outputs.DEPLOY_IDS }}
+      deploy_ids: ${{ steps.get-value.outputs.deploy_ids }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -37,5 +37,3 @@ jobs:
               echo "deploy ID:$deploy_id删除失败, 继续删除下一个"
             fi
           done
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
