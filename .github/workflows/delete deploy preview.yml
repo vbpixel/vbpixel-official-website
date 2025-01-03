@@ -10,7 +10,7 @@ jobs:
   Get-Deploy-IDs:
     runs-on: ubuntu-latest
     outputs:
-      deploy_ids: ${{ steps.get-value.outputs.deploy_ids }}
+      deploy_ids: ${{ steps.get-value.outputs.DEPLOY_IDS }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
